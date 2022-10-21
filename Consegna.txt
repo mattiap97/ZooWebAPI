@@ -1,0 +1,57 @@
+﻿Zoo: https://unikeyit@dev.azure.com/unikeyit/Academy%2022.5/_git/20221021Animali 
+
+ 
+
+Animale { 
+
+Specie, 
+
+Peso 
+
+Altezza 
+
+Id 
+
+} 
+
+ 
+
+CRUD 
+
+	GetAll 
+
+	Create 
+
+	Delete 
+
+	PUT 
+
+	GetById 
+
+ 
+
+La persistenza (FileHelper all’interno del service). 
+
+GetAnimaliFromSpecie 
+
+*GetOrderByPeso 
+
+ 
+
+*Area { 
+
+	Id 
+
+	CapienzaMaxAnimali 
+
+	Specie 
+
+	Animali 
+
+} 
+
+*POST Area 
+
+*InsertAnimaleInArea 
+
+*RicercaAreaTramiteAnimale 
