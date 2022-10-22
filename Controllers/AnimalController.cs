@@ -61,5 +61,19 @@ namespace ZooWebAPI.Controllers
             _animalService.Put(id, animal);
             return Ok();
         }
+
+        [HttpGet("specie/{specie}")]
+        public IActionResult GetBySpecie(string specie)
+        {
+            var animalBySpecie = _animalService.GetAnimalFromSpecie(specie);
+            return Ok(animalBySpecie);
+        }
+
+        [HttpGet("peso")]
+        public IActionResult GetOrderPeso()
+        {
+            var animalByPeso = _animalService.GetOrderByPeso();
+            return Ok(animalByPeso);
+        }
     }
 }

@@ -88,5 +88,17 @@ namespace ZooWebAPI.Services
             //    }
             //}
         }
+
+        public List<Animal> GetAnimalFromSpecie(string specie)
+        {
+            var animalFromSpecie = _animals.Where(animals => animals.Specie == specie);
+            return animalFromSpecie.ToList();
+        }
+
+        public List<Animal> GetOrderByPeso()
+        {
+            var animalPeso = _animals.OrderBy(animals => animals.Peso);
+            return animalPeso.ToList();
+        }
     }
 }
