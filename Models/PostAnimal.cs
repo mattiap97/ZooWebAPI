@@ -5,6 +5,5 @@
         public string? Specie { get; set; }
         public double Peso { get; set; }
         public double Altezza { get; set; }
-
     }
 }

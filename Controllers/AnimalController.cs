@@ -54,5 +54,12 @@ namespace ZooWebAPI.Controllers
 
             return Ok(_animalService.GetAll());
         }
+
+        [HttpPut()]
+        public IActionResult PutId( int id, [FromBody] PostAnimal animal)
+        {
+            _animalService.Put(id, animal);
+            return Ok();
+        }
     }
 }

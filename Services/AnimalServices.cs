@@ -54,5 +54,39 @@ namespace ZooWebAPI.Services
             var animalDelete = _animals.Single(animale => animale.Id == id);
             _animals.Remove(animalDelete);
         }
+
+        public void Put(int id, PostAnimal animale)
+        {
+            var animalId = _animals.FirstOrDefault(animals => animals.Id == id);
+            if (animalId == null)
+            {
+                var animaleAdd = AddNewAnimal(animale);
+            }
+            else
+            {
+                _animals.Remove(animalId);
+                var animalToAdd = new Animal
+                {
+                    Id = animalId.Id,
+                    Specie = animale.Specie,
+                    Altezza = animale.Altezza,
+                    Peso = animale.Peso
+                };
+                _animals.Add(animalToAdd);
+
+            }
+
+
+
+            //foreach (var animals in _animals)
+            //{
+            //    if (animals.Id == id)
+            //    {
+            //        //animals.Specie = animale.Specie;
+            //        //animals.Peso = animale.Peso;
+            //        //animals.Altezza = animale.Altezza;
+            //    }
+            //}
+        }
     }
 }
