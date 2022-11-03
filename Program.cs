@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ZooWebAPI.DAL;
 using ZooWebAPI.Models;
 using ZooWebAPI.Services;
 using ZooWebAPI.Services.Interfaces;
@@ -12,6 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAnimal, AnimalServices>();
 builder.Services.AddScoped<IList<Animal>, List<Animal>>();
+
+builder.Services.AddDbContext<ZooDbContext>(option =>
+                option.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ZooWebApi"));
+
 
 
 var app = builder.Build();

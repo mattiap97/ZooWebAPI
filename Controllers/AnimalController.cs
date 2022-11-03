@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZooWebAPI.Models;
+using ZooWebAPI.Models.Post;
 using ZooWebAPI.Services.Interfaces;
 
 namespace ZooWebAPI.Controllers

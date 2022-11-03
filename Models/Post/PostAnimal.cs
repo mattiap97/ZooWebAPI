@@ -1,4 +1,4 @@
-﻿namespace ZooWebAPI.Models
+﻿namespace ZooWebAPI.Models.Post
 {
     public class PostAnimal
     {

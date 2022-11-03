@@ -1,4 +1,5 @@
 ﻿using ZooWebAPI.Models;
+using ZooWebAPI.Models.Post;
 
 namespace ZooWebAPI.Services.Interfaces
 {
