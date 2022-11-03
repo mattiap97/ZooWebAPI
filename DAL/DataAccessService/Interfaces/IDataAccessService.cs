@@ -5,8 +5,8 @@ namespace ZooWebAPI.DAL.DataAccessService.Interfaces
 {
     public interface IDataAccessService
     {
-        public Animal GetAllAnimal(PostAnimal pAnimal);
-        public Animal AddAnimal(Animal Animal);
+        public IEnumerable<Animal> GetAnimals();
+        public Animal AddAnimal(PostAnimal Animal);
         public Animal GetAnimalById(int id);
         public void DeleteAnimal(int id);
         public Animal UpdateAnimal(Animal animal);

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ZooWebAPI.DAL.DataAccessService.Interfaces;
+using ZooWebAPI.Models;
 using ZooWebAPI.Models.Post;
 using ZooWebAPI.Services.Interfaces;
 
@@ -8,17 +10,17 @@ namespace ZooWebAPI.Controllers
     [ApiController]
     public class AnimalController : ControllerBase
     {
-        private readonly IAnimal _animalService;
+        private readonly IDataAccessService _dataAccessService;
 
-        public AnimalController(IAnimal animalService)
+        public AnimalController(IDataAccessService dataAccessService)
         {
-            _animalService = animalService;
+            _dataAccessService = dataAccessService;
         }
 
         [HttpPost()]
-        public IActionResult CreateNewAnimal([FromBody] PostAnimal animals)
+        public IActionResult CreateNewAnimal([FromBody] Animal animals)
         {
-            var animaleAdded = _animalService.AddNewAnimal(animals);
+            var animaleAdded = _dataAccessService.AddAnimal(animals);
 
             return Ok();
         }
@@ -33,15 +35,13 @@ namespace ZooWebAPI.Controllers
         [HttpGet()]
         public IActionResult GetAll()
         {
-            //var animals = _animalService.GetAll();
-            return Ok(_animalService.GetAll());
-            //return Ok(_service.GetAll());
+            return Ok(_dataAccessService.GetAnimals());
         }
 
         [HttpGet("{animalId}/animal")]
         public IActionResult GetAnimalById(int animalId)
         {
-            var animal = _animalService.GetById(animalId);
+            var animal = _dataAccessService.GetAnimalById(animalId);
             if (animal == null)
                 return NotFound();
             return Ok(animal);
@@ -50,30 +50,31 @@ namespace ZooWebAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteAnimal(int id)
         {
-            _animalService.DeleteAnimal(id);
+            _dataAccessService.DeleteAnimal(id);
 
-            return Ok(_animalService.GetAll());
+            return Ok(_dataAccessService.GetAnimals());
         }
 
-        [HttpPut()]
-        public IActionResult PutId( int id, [FromBody] PostAnimal animal)
-        {
-            _animalService.Put(id, animal);
-            return Ok();
-        }
 
-        [HttpGet("specie/{specie}")]
-        public IActionResult GetBySpecie(string specie)
-        {
-            var animalBySpecie = _animalService.GetAnimalFromSpecie(specie);
-            return Ok(animalBySpecie);
-        }
+        //[HttpPut()]
+        //public IActionResult PutId( int id, [FromBody] PostAnimal animal)
+        //{
+        //    _animalService.Put(id, animal);
+        //    return Ok();
+        //}
 
-        [HttpGet("peso")]
-        public IActionResult GetOrderPeso()
-        {
-            var animalByPeso = _animalService.GetOrderByPeso();
-            return Ok(animalByPeso);
-        }
+        //[HttpGet("specie/{specie}")]
+        //public IActionResult GetBySpecie(string specie)
+        //{
+        //    var animalBySpecie = _animalService.GetAnimalFromSpecie(specie);
+        //    return Ok(animalBySpecie);
+        //}
+
+        //[HttpGet("peso")]
+        //public IActionResult GetOrderPeso()
+        //{
+        //    var animalByPeso = _animalService.GetOrderByPeso();
+        //    return Ok(animalByPeso);
+        //}
     }
 }
